@@ -18,17 +18,19 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnCom
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         vw = (VideoView)findViewById(R.id.player);
+        setVideo(R.raw.window);
         MediaController mc = new MediaController(this);
         vw.setMediaController(mc);
-        vw.setOnCompletionListener(this);
-        setVideo(R.raw.window);
+        mc.setAnchorView(vw);
+        //vw.setOnCompletionListener(this);
+        //setVideo(R.raw.window);
     }
 
     public void setVideo(int id){
         String path = "android:resource://" + getPackageName() + "/" + id;
         Uri uri = Uri.parse(path);
         vw.setVideoURI(uri);
-        vw.start();
+        //vw.start();
     }
 
     @Override
